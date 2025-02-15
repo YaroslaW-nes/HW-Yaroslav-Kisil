@@ -1,0 +1,74 @@
+class Batch:
+    def __init__(self, frac, poll):
+        self.fraction = frac
+        self.pollution = poll
+        self.solution = None
+        
+    def cyanization(self, cyanizer, catalyst):
+        pass
+    
+    def filtering(self, filter):
+       
+        # один из вариантов реализации, принимает на вход любые фильтры и различает их по полю efficiency
+       self.pollution /= filter.efficiency
+       a = 0.1 * filter.efficiency
+       filter.weariness += a
+            
+       if filter.weariness >= 0.8:
+            print("Change filter ASAP")
+        
+class Ore:
+    def __init__(self, volume, frac, poll):
+        self.volume = volume #размер руды, которая приехала на обработку, измеренный в batches
+        self.fraction = frac 
+        self.pollution = poll
+        
+    def __del__(self):
+        pass
+
+    def grinding(self, X):
+        batches = [] #Я подумал, будет прикольно сделать, чтобы батчи группировались в массивы по признаку исходного куска руды
+
+        for i in range(self.volume):
+            batch = Batch(self.fraction-X, self.polution)
+            batches.append(batch)
+            
+        self.__del__
+
+        return batches
+    
+class Solution:
+    def __init__(self):
+        self.name = None
+        self.concentration = None
+        self.purity = None
+        
+class Cyanizer(Solution):
+    def __init__(self, conc, pur):
+        self.name = "NaCN"
+        self.concentration = conc
+        self.purity = pur
+        
+class Catalyst(Solution):
+    def __init__(self, conc, pur):
+        self.name = "Fe(SO4)3"
+        self.concentration = conc
+        self.purity = pur
+        
+class Filter:
+    def __init__(self):
+        self.type = None
+        self.efficiency = None
+        self.weariness = None
+        
+class FilterA(Filter):
+    def __init__(self, w):
+        self.type = "A"
+        self.efficiency = 3
+        self.weariness = w
+        
+class FilterB(Filter):
+    def __init__(self, w):
+        self.type = "B"
+        self.efficiency = 2
+        self.weariness = w
